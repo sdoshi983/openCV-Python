@@ -25,6 +25,7 @@ import cv2
 cap = cv2.VideoCapture(0)
 cap.set(3, 640) # 3 is the id for width
 cap.set(4, 480) # 4 is the id for height
+cap.set(10, 100) # 10 is the id for brightness
 
 while True:
     success, img = cap.read()
