@@ -1,6 +1,8 @@
 import cv2
 import numpy as np
 
+#                   Basic Functions :
+
 # Original to Gray image
 img = cv2.imread('resources/images.jpg')
 imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)     # cvtColor function stands for convertColor
