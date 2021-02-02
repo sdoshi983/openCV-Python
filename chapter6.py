@@ -10,3 +10,7 @@ cv2.imshow('horizontal', imgHorizontal)
 imgVertical = np.vstack((img, img))
 cv2.imshow('vertical', imgVertical)     # here, the elements are stacked vertically
 cv2.waitKey(0)
+
+# NOTE:
+#   - the issue with the above method is that all the elements of the tuple should have same BGR else it will not work
+#   - the images cannot be resized. If we want to stack multiple elements then we can't assign them our specific size. The size will be taken by default
