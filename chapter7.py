@@ -32,9 +32,11 @@ while True:
     lower = np.array([hueMin, saturationMin, valueMin])
     upper = np.array([hueMax, saturationMax, valueMax])
     mask = cv2.inRange(imgHSV, lower, upper)    # this will give the filtered out image in range [lower upper]
+    finalImg = cv2.bitwise_and(img, img, mask=mask)     # it will perform 'and' operation on pixels of original image and mask
 
     print(hueMin, hueMax, saturationMin, saturationMax, valueMin, valueMax)
     cv2.imshow('original', img)
     cv2.imshow('HSV', imgHSV)
     cv2.imshow('Mask', mask)
+    cv2.imshow('final', finalImg)
     cv2.waitKey(1)
