@@ -3,7 +3,7 @@ import numpy as np
 
 #           Contours / shape detection
 
-def stackImages(scale,imgArray):
+def stackImages(scale,imgArray):        # function for stacking images
     rows = len(imgArray)
     cols = len(imgArray[0])
     rowsAvailable = isinstance(imgArray[0], list)
@@ -35,15 +35,17 @@ def stackImages(scale,imgArray):
     return ver
 
 
-def getContours(img):
-    contours, hierarchy = cv2.findContours(img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+def getContours(img):   # this function draws the contour i.e. detects the shapes and draw the border around it
+    contours, hierarchy = cv2.findContours(img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)   # returns the list of contours
     for cnt in contours:
-        area = cv2.contourArea(cnt)
+        area = cv2.contourArea(cnt)     # returns the area of the contour passed as a parameter
         print(area)
-        cv2.drawContours(imgContour, cnt, -1, (255, 0, 0), 3)
+        if area > 500:
+            cv2.drawContours(imgContour, cnt, -1, (255, 0, 0), 3)  # draws the border around the contour on the image passed. image, contour, index of contour(-1 to consider all the contour), color of the border which is gonna be drawn, width of the border
+
 
 img = cv2.imread('resources/shapes.png')
-imgContour = img.copy()
+imgContour = img.copy()     # making copy of the image
 
 imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 imgBlur = cv2.GaussianBlur(imgGray, (7, 7), 1)
